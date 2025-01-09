@@ -1,23 +1,56 @@
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prioritas Group</title>
-
-  <!-- Open Graph Metadata -->
-  <meta property="og:title" content="PG Mobile" />
-  <meta property="og:description" content="Mitra Usaha Hebat" />
-  <meta property="og:image" content="https://prioritasgroup.github.io/logo_pg.png" />
-  <meta property="og:url" content="https://prioritasgroup.github.io/dev" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card Metadata -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="PG Mobile" />
-  <meta name="twitter:description" content="Mitra Usaha Hebat" />
-  <meta name="twitter:image" content="https://prioritasgroup.github.io/logo_pg.png" />
-
-  <!-- App Links Metadata -->
-  <meta property="al:android:package" content="com.pg.mobile.dev" />
-  <meta property="al:android:app_name" content="PG Mobile" />
-  <meta property="al:android:target_url" content="https://play.google.com/store/apps" />
-</head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prioritas Group</title>
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="PG Mobile" />
+    <meta property="og:description" content="Mitra Usaha Hebat" />
+    <meta property="og:image" content="https://prioritasgroup.github.io/logo_pg.png" />
+    <meta property="og:url" content="https://prioritasgroup.github.io/dev" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PG Mobile" />
+    <meta name="twitter:description" content="Mitra Usaha Hebat" />
+    <meta name="twitter:image" content="https://prioritasgroup.github.io/logo_pg.png" />
+    
+    <!-- App Links Metadata -->
+    <meta property="al:android:package" content="com.pg.mobile.dev" />
+    <meta property="al:android:app_name" content="PG Mobile" />
+    <meta property="al:android:target_url" content="https://play.google.com/store/apps" />
+    
+    <script>
+      function getMobileOperatingSystem() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        // Windows Phone must come first because its UA also contains "Android"
+        // if (/windows phone/i.test(userAgent)) {
+        //   return "Windows Phone";
+        // }
+        if (/android/i.test(userAgent)) {
+          return "Android";
+        }
+        // iOS detection from: http://stackoverflow.com/a/9039885/177710
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          return "iOS";
+        }
+        return "unknown";
+      }
+    </script>
+    
+    <script>
+      function DetectAndServe() {
+        let os = getMobileOperatingSystem();
+        if (os == "Android") {
+          window.location.href = "http://play.google.com/store/apps/details?id=com.kumpul.mitrapg";
+        } else if (os == "iOS") {
+          window.location.href = "https://apple.com/app-store";
+        }
+      }
+    </script>
+  </head>
+  <body onload="DetectAndServe()">
+</html>
