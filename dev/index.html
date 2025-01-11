@@ -44,8 +44,14 @@
     <script>
       function DetectAndServe() {
         let os = getMobileOperatingSystem();
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        
         if (os == "Android") {
-          window.location.href = "http://play.google.com/store/apps/details?id=com.kumpul.mitrapg";
+          const referrer = urlParams.has("ref") ? "&referrer=" + urlParams.get("ref") : '';
+          
+          window.location.href = "http://play.google.com/store/apps/details?id=com.kumpul.mitrapg" + referrer;
         } else if (os == "iOS") {
           window.location.href = "https://apple.com/app-store";
         } else {
